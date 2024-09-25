@@ -13,10 +13,9 @@ class UserRepository extends AbstractRepository {
   async create(user, Role = "etudiant") {
     // Execute the SQL INSERT query to add a new user to the "utilisateur" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (nom, role) values (?, ?)`,
-      [user.Nom, Role]
+      `insert into ${this.table} (nom, mdp, role) values (?, ?, ?)`,
+      [user.Nom, user.Mdp, Role]
     );
-
     // Return the ID of the newly inserted user
     return result.insertId;
   }
@@ -44,7 +43,7 @@ class UserRepository extends AbstractRepository {
   async isUserExist(user) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where Nom = ?`,
+      `select * from ${this.table} where nom = ?`,
       [user.Nom]
     );
 

@@ -1,5 +1,5 @@
+/* eslint-disable no-console */
 /* eslint-disable camelcase */
-/* eslint-disable no-undef */
 const jwt = require("jsonwebtoken");
 const tables = require("../../database/tables");
 
@@ -43,6 +43,7 @@ const read = async (req, res, next) => {
 const add = async (req, res, next) => {
   // Extract the item data from the request body
   const user = req.body;
+  console.log("Données utilisateur reçues :", user);
 
   try {
     // Insert the item into the database

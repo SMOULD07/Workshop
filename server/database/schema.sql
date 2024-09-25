@@ -2,7 +2,7 @@ CREATE TABLE utilisateur (
     ID_utilisateur INT AUTO_INCREMENT PRIMARY KEY,
     Nom VARCHAR(255) NOT NULL,
     Role ENUM('etudiant', 'administrateur') NOT NULL,
-    Mdp VARCHAR(50) NULL
+    Mdp VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE categorie (
