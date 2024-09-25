@@ -7,38 +7,11 @@ import App from "./App";
 import HomePage from "./pages/HomePage/HomePage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import ConnectionPage from "./pages/ConnectionPage/ConnectionPage";
-import ChoicePage from "./pages/ChoicePage/ChoicePage"
+import ChoicePage from "./pages/ChoicePage/ChoicePage";
 import IdeaPage from "./pages/IdeaPage/IdeaPage";
 import VotePage from "./pages/VotePage/VotePage";
 import ProfilPage from "./pages/ProfilPage/ProfilPage";
 
-const ApiUrl = import.meta.env.VITE_API_URL;
-
-// Gérer l'inscription 
-const handleSignUp = async ({ formData }) => {
-  try {
-    const response = await fetch(`${ApiUrl}/api/user/registration`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.status === 401) {
-      alert("Le pseudo existe déjà");
-    }
-
-    if (response.status !== 201) {
-      const errorData = await response.json();
-      return { error: errorData.message };
-    }
-
-    return { success: true };
-  } catch (error) {
-    return { error: error.message };
-  }
-};
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -49,12 +22,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/choice",
-        element: <ChoicePage/>,
+        element: <ChoicePage />,
       },
 
       {
         path: "/registration",
-        element: <RegistrationPage handleSignUp={handleSignUp} />,
+        element: <RegistrationPage />,
       },
 
       {
@@ -64,18 +37,19 @@ const router = createBrowserRouter([
 
       {
         path: "/idea",
-        element: <IdeaPage/>,
+        element: <IdeaPage />,
       },
 
       {
         path: "/vote",
-        element: <VotePage/>,
+        element: <VotePage />,
       },
 
       {
         path: "/Profil",
         element: <ProfilPage/>,
       },
+
 
     ],
   },
