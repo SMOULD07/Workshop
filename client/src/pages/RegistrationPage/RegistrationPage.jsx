@@ -191,6 +191,7 @@ export default function RegistrationPage() {
           {formErrors.password2 !== "" && (
             <div className="error">{formErrors.password2}</div>
           )}
+
           <button
             type="submit"
             aria-label=" Cliquez sur le bouton pour valider les informations saisies pour procédeder à la création du profil de Why not ? "
