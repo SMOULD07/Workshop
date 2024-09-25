@@ -10,6 +10,7 @@ import ConnectionPage from "./pages/ConnectionPage/ConnectionPage";
 import ChoicePage from "./pages/ChoicePage/ChoicePage"
 import IdeaPage from "./pages/IdeaPage/IdeaPage";
 import VotePage from "./pages/VotePage/VotePage";
+import ProfilPage from "./pages/ProfilPage/ProfilPage";
 
 const ApiUrl = import.meta.env.VITE_API_URL;
 
@@ -71,9 +72,15 @@ const router = createBrowserRouter([
         element: <VotePage/>,
       },
 
+      {
+        path: "/Profil",
+        element: <ProfilPage/>,
+      },
+
     ],
   },
 ]);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -172,7 +172,7 @@ const handleSubmit = async (e) => {
           {formErrors.password2 !== "" && (
             <div className="error">{formErrors.password2}</div>
           )}
-          <Link to = "/choice">
+          <Link to = "/connection">
             <button
               type="submit"
               aria-label=" Cliquez sur le bouton pour valider les informations saisies pour procédeder à la création du profil de Why not ? "
