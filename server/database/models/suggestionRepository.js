@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractRepository = require("./AbstractRepository");
 
 class SuggestionRepository extends AbstractRepository {
@@ -22,11 +23,11 @@ class SuggestionRepository extends AbstractRepository {
 
   // The Rs of CRUD - Read operations
 
-  async read(id) {
+  async read(ID_suggestion) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
-      [id]
+      `select * from ${this.table} where ID_suggestion = ?`,
+      [ID_suggestion]
     );
 
     // Return the first row of the result, which represents the item
