@@ -1,8 +1,9 @@
-import { Form } from "react-router-dom";
-import { useState, Link } from "react";
+import PropTypes from "prop-types";
+import  { Form, Link }from "react-router-dom";
+import { useState } from "react";
 import styles from "./RegistrationPage.module.css";
 
-export default function RegistrationPage() {
+export default function RegistrationPage({handleSignUp}) {
 
 
 // State pour gérer les valeurs du formulaire 
@@ -113,14 +114,11 @@ const handleSubmit = async (e) => {
 
   const formData = {
     username: registerForm.username,
-    lastname: registerForm.lastname,
-    firstname: registerForm.firstname,
-    mail: registerForm.mail,
     password: registerForm.password,
   };
 
   if (validInputs() === true) {
-    const result = ({ formData });
+    const result = await handleSignUp({ formData });
 
     if (result.success) {
       window.location.href = "/connection";
@@ -129,7 +127,6 @@ const handleSubmit = async (e) => {
     }
   }
 };
-
 
   return (
     <>
@@ -186,4 +183,8 @@ const handleSubmit = async (e) => {
       </div>
       </>
   );
+}
+
+RegistrationPage.propTypes = {
+  handleSignUp : PropTypes.func.isRequired,
 }

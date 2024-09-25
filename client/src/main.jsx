@@ -11,6 +11,33 @@ import ChoicePage from "./pages/ChoicePage/ChoicePage"
 import IdeaPage from "./pages/IdeaPage/IdeaPage";
 import VotePage from "./pages/VotePage/VotePage";
 
+const ApiUrl = import.meta.env.VITE_API_URL;
+
+// Gérer l'inscription 
+const handleSignUp = async ({ formData }) => {
+  try {
+    const response = await fetch(`${ApiUrl}/api/user/registration`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.status === 401) {
+      alert("Le pseudo existe déjà");
+    }
+
+    if (response.status !== 201) {
+      const errorData = await response.json();
+      return { error: errorData.message };
+    }
+
+    return { success: true };
+  } catch (error) {
+    return { error: error.message };
+  }
+};
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -26,7 +53,7 @@ const router = createBrowserRouter([
 
       {
         path: "/registration",
-        element: <RegistrationPage/>,
+        element: <RegistrationPage handleSignUp={handleSignUp} />,
       },
 
       {
