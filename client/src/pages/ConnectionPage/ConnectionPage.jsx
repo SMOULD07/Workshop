@@ -1,18 +1,17 @@
-import { Form, Link } from "react-router-dom";
+import { Form} from "react-router-dom";
 import { useState } from "react";
 import styles from "./ConnectionPage.module.css";
 
 export default function ConnectionPage() {
-  const ApiUrl = import.meta.env.VITE_API_URL;
   const [connectionForm, setConnectionForm] = useState({
-    username: "",
-    password: "",
+    nom: "",
+    mdp: "",
   });
 
   // State pour obtenir less erreurs du formulaire
   const [formErrors, setFormErrors] = useState({
-    username: "",
-    password: "",
+    nom: "",
+    mdp: "",
   });
 
   // Fonction pour sauvegarder la données 
@@ -37,27 +36,27 @@ export default function ConnectionPage() {
   };
 
   // expression régulières pour imposer des types de mot de passe 
-  const validPassword = (password) => {
+  const validPassword = (mdp) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-    return regex.test(String(password));
+    return regex.test(String(mdp));
   };
 
   // Valider tous les vérificateurs après 
   const validInputs = () => {
-    const { username, password } = connectionForm;
+    const { nom, mdp } = connectionForm;
 
     const fields = [
       {
-        name: "username",
-        value: username,
+        name: "nom",
+        value: nom,
         message: "Un pseudo doit être requis",
         minLength: 2,
         errorMessage: "Ce pseudo correspond à aucun compte",
       },
 
       {
-        name: "password",
-        value: password,
+        name: "mdp",
+        value: mdp,
         message: "Un mot de passe doit être requis ",
         minLength: 8,
         errorMessage: "Le mot de passe est incorrect",
@@ -74,7 +73,7 @@ export default function ConnectionPage() {
         } else if (minLength && value.length < minLength) {
           setError(name, errorMessage);
           allValid = false;
-        } else if (name === "password" && !validPassword(value)) {
+        } else if (name === "mdp" && !validPassword(value)) {
           setError(name, message);
           allValid = false;
         } else if (match !== undefined && value !== match) {
@@ -89,18 +88,19 @@ export default function ConnectionPage() {
   };
 
   // Permet utilisateur de se connecter en récupérant les données dans la BD 
-  const handleLogin = async (dataForm) => {
+  const handleLogin = async (FormData) => {
     try {
+      const ApiUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(`${ApiUrl}/api/user/login`, {
         method: "post",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataForm),
+        body: JSON.stringify(FormData),
         credentials: "include",
       });
 
       if (response.status === 200) {
         const user = await response.json();
-        handleLogin(user.user);
+        handleLogin(user.utilisateur);
         return true;
       }
     } catch (error) {
@@ -114,14 +114,14 @@ export default function ConnectionPage() {
     e.preventDefault();
 
     const formData = {
-      username: connectionForm.username,
-      password: connectionForm.password,
+      Nom: connectionForm.nom,
+      Mdp: connectionForm.mdp,
     };
 
     if (validInputs() === true) {
       const result = await handleLogin({ formData });
       if (result === true) {
-        window.location.href = "/";
+        window.location.href = "/choice";
       } else {
         setError("form", result.error);
       }
@@ -138,34 +138,32 @@ export default function ConnectionPage() {
           <input
             placeholder= "votre pseudo"
             type= "text"
-            id= "username"
-            name= "username"
+            id= "nom"
+            name= "nom"
             aria-label= "Entrer un pseudonyme"
-            value={connectionForm.username}
+            value={connectionForm.nom}
             onChange={handleChange}
             required
           />
-          {formErrors.username !== "" && (
-            <div className={styles.error}>{formErrors.username}</div>
+          {formErrors.nom !== "" && (
+            <div className={styles.error}>{formErrors.nom}</div>
           )}
-           <label htmlFor=" password" > Mot de passe</label>
+           <label htmlFor=" mdp" > Mot de passe</label>
           <input
             type= "password"
-            id= "password"
-            name= "password"
+            id= "mdp"
+            name= "mdp"
             aria-label= "Entrer le mot de passe de votre compte"
-            value={connectionForm.password}
+            value={connectionForm.mdp}
             onChange={handleChange}
             required
           />
-<Link to = "/choice">
           <button
             type= "submit"
             aria-label= "C'est ici pour vous connecter à votre compte"
             onClick={handleSubmit}
             > Connexion
           </button>
-</Link>
         </Form>
       </div>
       </>
