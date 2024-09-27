@@ -29,7 +29,7 @@ export default function RegistrationPage() {
     }));
   };
 
-  // Paramétrer les réussites (en effaçantles erreurs)
+  // Paramétrer les réussites 
   const setSuccess = (name) => {
     setFormErrors((previousErrors) => ({
       ...previousErrors,
@@ -39,7 +39,7 @@ export default function RegistrationPage() {
 
   // -----------------------------------------------DEBUT DES VERIFICATEURS FRONT------------------------------------------------//
 
-  // expression regluière pour exiger des types de caractères pour le password
+  // expression regluière pour exiger des types de caractères pour le mot de passe
   const validPassword = (mdp) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
     return regex.test(String(mdp));
@@ -191,6 +191,7 @@ export default function RegistrationPage() {
           {formErrors.password2 !== "" && (
             <div className="error">{formErrors.password2}</div>
           )}
+
           <button
             type="submit"
             aria-label=" Cliquez sur le bouton pour valider les informations saisies pour procédeder à la création du profil de Why not ? "

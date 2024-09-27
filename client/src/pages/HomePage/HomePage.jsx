@@ -4,14 +4,12 @@ import BoxVisual from "../../components/BoxVisual/BoxVisual";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
-    return (
+  return (
     <main className={styles.container_homepage}>
-        <h1>Des idées ?</h1>
-        <BoxVisual/>
+      <h1>Des idées ?</h1>
+      <BoxVisual />
 
-      
       <div className={styles.button_container}>
-      
         <Link to="/registration">
           <button type="button" className={styles.button_registration}>
             S'inscrire
@@ -23,7 +21,7 @@ export default function HomePage() {
             Se connecter
           </button>
         </Link>
-        </div> 
-      </main>
-    );
-  }
+      </div>
+    </main>
+  );
+}

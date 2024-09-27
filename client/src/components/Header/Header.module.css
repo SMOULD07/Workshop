@@ -1,0 +1,10 @@
+.container_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logo {
+  width: 24vw;
+  height: auto;
+}

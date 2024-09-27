@@ -1,0 +1,91 @@
+.card {
+  background-color: white;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.5rem;
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 90vw;
+  height: auto;
+  margin: 1.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.vote_title {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 300;
+  margin: 0.8rem 1rem 1rem 0.4rem;
+}
+.vote_subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 100;
+  margin: 0 0 0.8 1rem;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 100;
+  margin: 0.5rem 2.5rem 0.8 3rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin: 1.8rem 2rem 2rem 1.8rem;
+}
+
+.buttons {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  margin: 1rem 1rem 1rem 0.4rem;
+}
+
+.vote_items {
+  font-size: 1.7rem;
+  width: 45vw;
+  height: 9vh;
+  margin: 0 1.2rem;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffff;
+  transition: background-color 0.3s ease;
+}
+
+.vote_items:hover {
+  background-color: var(--main-color);
+}
+
+.vote_items:active {
+  transform: scale(0.95);
+}
+
+.card.left {
+  transform: translateX(400px) rotate(-20deg); /* Translation et inclinaison vers la droite */
+  opacity: 0; /* Diminution de l'opacité lors du swipe */
+}
+
+.card.right {
+  transform: translateX(800px) rotate(-10deg); /* Translation et inclinaison vers la droite */
+  opacity: 0; /* Diminution de l'opacité lors du swipe */
+}
+
+.sugesstion_title {
+  font-weight: bold;
+  color: var(--main-color);
+}
+
+@media (min-width: 900px) {
+  .card {
+    width: 90vw;
+    height: auto;
+    margin: 2rem 3rem;
+    transition: all 0.3s ease-in-out;
+  }
+}

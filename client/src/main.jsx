@@ -10,6 +10,7 @@ import ConnectionPage from "./pages/ConnectionPage/ConnectionPage";
 import ChoicePage from "./pages/ChoicePage/ChoicePage";
 import IdeaPage from "./pages/IdeaPage/IdeaPage";
 import VotePage from "./pages/VotePage/VotePage";
+import ProfilPage from "./pages/ProfilPage/ProfilPage";
 
 const router = createBrowserRouter([
   {
@@ -43,9 +44,17 @@ const router = createBrowserRouter([
         path: "/vote",
         element: <VotePage />,
       },
+
+      {
+        path: "/Profil",
+        element: <ProfilPage/>,
+      },
+
+
     ],
   },
 ]);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

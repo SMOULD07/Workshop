@@ -3,22 +3,24 @@
 :root {
   /*COULEURS*/
   --main-color: #007bff;
-  --secondary-color: #2f3061;
+  --secondary-color: #2c2c2c;
   --valide-idea: #28d079;
   --secondary-background: #f0f0f0;
   --dark-color: #2c2c2c;
   --key-information: #ffce00;
+  --shadow-color: #cccccc;
   --reject-idea: #ff4d4d;
   --background-message: #9ecbfb;
-  --light-color: white;
+  --light-color: #ffff;
 
   /*POLICES*/
 
   /* Titres */
-  --title-font-family: Verdana;
+  --title-font-family: "Verdana", "Geneva", "Tahoma", sans-serif;
   --title-font-family-bold: Verdana, sans-serif, bold;
   --title-font-family-italic: Verdana, sans-serif, italic;
-  --title-font-size: 1.2rem /* Générique */ --main-font-size: 0.8rem;
+  --title-font-size: 1rem;
+  --main-font-size: 0.8rem;
   --main-font-family: "Verdana", "Geneva", "Tahoma", sans-serif;
   --font-color: black;
 
@@ -78,13 +80,10 @@ button {
 
   /* texte */
   font-family: var(--title-font-family);
-  color: var(--light-color);
-  text-shadow: -0.13rem;
-  color: var(--dark-color);
   text-decoration: none;
 
   /* border */
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 ul,
