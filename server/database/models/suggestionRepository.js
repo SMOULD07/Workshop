@@ -13,8 +13,8 @@ class SuggestionRepository extends AbstractRepository {
   async create(suggestion) {
     // Execute the SQL INSERT query to add a new item to the "item" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, description) values (?, ?)`,
-      [suggestion.title, suggestion.description]
+      `insert into ${this.table} (titre, description) values (?, ?)`,
+      [suggestion.Titre, suggestion.Description]
     );
 
     // Return the ID of the newly inserted item
